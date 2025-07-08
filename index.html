@@ -46,6 +46,37 @@
             transform: scale(1);
             transition: all 0.3s ease-in-out;
         }
+        /* Styles pour les sections pliables */
+        .collapsible-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background-color: #f3f4f6; /* bg-gray-100 */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 0.5rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .collapsible-header:hover {
+            background-color: #e5e7eb; /* bg-gray-200 */
+        }
+        .collapsible-header svg {
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] .collapsible-header svg {
+            transform: rotate(90deg);
+        }
+        .collapsible-content {
+            padding: 0.5rem 1rem 1rem 1rem;
+            border-left: 2px solid #a78bfa; /* border-purple-400 */
+            margin-left: 0.5rem;
+        }
+        .nested-collapsible-content {
+            border-left: 1px solid #c4b5fd; /* border-purple-300 */
+            margin-left: 0.75rem;
+            padding-left: 0.75rem;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-purple-200 flex flex-col items-center justify-center p-4 text-gray-800 pb-16 transition-all duration-1000 ease-in-out">
@@ -113,37 +144,52 @@
 
             <div id="adminContent" class="space-y-8 mt-8 text-left hidden">
                 <!-- Édition des Actions -->
-                <div>
-                    <h3 class="text-2xl font-bold text-purple-700 mb-4">Éditer les Actions</h3>
-                    <div id="actionsEditor">
-                        <!-- Actions will be rendered here by JS -->
+                <details class="mb-6 bg-gray-50 rounded-lg shadow-md">
+                    <summary class="collapsible-header text-2xl font-bold text-purple-700">
+                        Éditer les Actions
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </summary>
+                    <div class="collapsible-content">
+                        <div id="actionsEditor" class="space-y-4">
+                            <!-- Actions will be rendered here by JS -->
+                        </div>
+                        <button id="saveActionsData" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 transition duration-300 ease-in-out">
+                            Sauvegarder Actions
+                        </button>
                     </div>
-                    <button id="saveActionsData" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 transition duration-300 ease-in-out">
-                        Sauvegarder Actions
-                    </button>
-                </div>
+                </details>
 
                 <!-- Édition des Zones du Corps -->
-                <div>
-                    <h3 class="text-2xl font-bold text-purple-700 mb-4">Éditer les Zones du Corps</h3>
-                    <div id="bodyPartsEditor">
-                        <!-- Body Parts will be rendered here by JS -->
+                <details class="mb-6 bg-gray-50 rounded-lg shadow-md">
+                    <summary class="collapsible-header text-2xl font-bold text-purple-700">
+                        Éditer les Zones du Corps
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </summary>
+                    <div class="collapsible-content">
+                        <div id="bodyPartsEditor" class="space-y-4">
+                            <!-- Body Parts will be rendered here by JS -->
+                        </div>
+                        <button id="saveBodyPartsData" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 transition duration-300 ease-in-out">
+                            Sauvegarder Zones du Corps
+                        </button>
                     </div>
-                    <button id="saveBodyPartsData" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 transition duration-300 ease-in-out">
-                        Sauvegarder Zones du Corps
-                    </button>
-                </div>
+                </details>
 
                 <!-- Édition des Défis Joker -->
-                <div>
-                    <h3 class="text-2xl font-bold text-purple-700 mb-4">Éditer les Défis Joker</h3>
-                    <div id="jokerChallengesEditor">
-                        <!-- Joker Challenges will be rendered here by JS -->
+                <details class="mb-6 bg-gray-50 rounded-lg shadow-md">
+                    <summary class="collapsible-header text-2xl font-bold text-purple-700">
+                        Éditer les Défis Joker
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </summary>
+                    <div class="collapsible-content">
+                        <div id="jokerChallengesEditor" class="space-y-4">
+                            <!-- Joker Challenges will be rendered here by JS -->
+                        </div>
+                        <button id="saveJokerChallengesData" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 transition duration-300 ease-in-out">
+                            Sauvegarder Défis Joker
+                        </button>
                     </div>
-                    <button id="saveJokerChallengesData" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-4 transition duration-300 ease-in-out">
-                        Sauvegarder Défis Joker
-                    </button>
-                </div>
+                </details>
             </div>
 
             <button id="closeAdminModal" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full shadow-lg mt-8 transition duration-300 ease-in-out">
@@ -220,7 +266,7 @@
                     <!-- Players will be rendered here by JS -->
                 </div>
                 <p id="playerCountMessage" class="text-sm text-red-600 mt-2 text-center hidden">
-                    <!-- Message for player count -->
+                    <!-- Message pour le nombre de joueurs -->
                 </p>
 
                 <!-- Sélecteur de niveau -->
@@ -533,7 +579,7 @@
         // Mode Admin
         let isAdminMode = false;
         let adminPassword = '';
-        const ADMIN_SECRET_PASSWORD = 'admin';
+        const ADMIN_SECRET_PASSWORD = 'admin'; // Changed to a simpler password for testing
 
         // États pour l'édition des données en mode admin (maintenant des objets structurés)
         let editableActions = {};
@@ -876,7 +922,8 @@
 
                 // Construct and display the result phrase
                 if (result.isJokerChallenge) {
-                    resultTextElem.innerHTML = `**DÉFI JOKER !** ${result.jokerChallengeText} (Temps: ${result.countdownTime}s)`;
+                    // MODIFICATION ICI : Suppression de l'affichage du temps pour les défis Joker
+                    resultTextElem.innerHTML = `**DÉFI JOKER !** ${result.jokerChallengeText}`;
                 } else if (result.player1 && result.player2 && result.action && result.bodyPart) {
                     resultTextElem.innerHTML = `${getColoredName(result.player1)} ${result.action} ${result.bodyPart} de ${getColoredName(result.player2)} pendant ${result.countdownTime} secondes !`;
                 } else {
@@ -991,45 +1038,60 @@
         }
 
         function renderAdminActions() {
-            console.log("DEBUG: renderAdminActions called. editableActions state:", editableActions); // Nouveau log
-            actionsEditorDiv.innerHTML = '';
+            console.log("DEBUG: renderAdminActions called. editableActions state:", editableActions);
+            actionsEditorDiv.innerHTML = ''; // Clear existing content
+            const orderedLevels = ['doux', 'moyen', 'intense', 'fusion']; // Define order
+
             let hasContent = false;
-            for (const level in editableActions) {
-                if (editableActions[level] && Array.isArray(editableActions[level]) && editableActions[level].length > 0) {
-                    hasContent = true;
-                    const levelDiv = document.createElement('div');
-                    levelDiv.className = "mb-6 p-4 border border-purple-200 rounded-lg bg-purple-50";
-                    levelDiv.innerHTML = `<h4 class="text-xl font-semibold text-purple-800 mb-3 capitalize">${level}</h4>`;
+            orderedLevels.forEach(level => {
+                const levelData = editableActions[level];
+                const levelDetails = document.createElement('details'); // Main collapsible for each level
+                levelDetails.className = "mb-4 bg-gray-100 rounded-lg shadow-sm";
+                levelDetails.innerHTML = `
+                    <summary class="collapsible-header text-xl font-semibold text-gray-700 capitalize">
+                        ${level}
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </summary>
+                    <div class="collapsible-content nested-collapsible-content space-y-3" id="actions-${level}-content">
+                        <!-- Content for actions will be rendered here -->
+                    </div>
+                `;
+                const levelContentDiv = levelDetails.querySelector(`#actions-${level}-content`);
 
-                    editableActions[level].forEach((action, index) => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = "flex items-center gap-2 mb-2";
-                        itemDiv.innerHTML = `
-                            <input type="text" value="${action}" data-level="${level}" data-index="${index}" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-purple-400 outline-none action-input" />
-                            <button class="bg-red-400 hover:bg-red-500 text-white p-2 rounded-full text-sm transition duration-200 remove-action-btn" data-level="${level}" data-index="${index}">&times;</button>
-                        `;
-                        levelDiv.appendChild(itemDiv);
-                    });
-
-                    const addBtn = document.createElement('button');
-                    addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
-                    addBtn.textContent = "Ajouter Action";
-                    addBtn.onclick = () => {
-                        if (!editableActions[level]) editableActions[level] = [];
-                        editableActions[level].push('');
-                        renderAdminActions();
-                    };
-                    levelDiv.appendChild(addBtn);
-                    actionsEditorDiv.appendChild(levelDiv);
+                if (levelData && Array.isArray(levelData)) {
+                    if (levelData.length > 0) {
+                        hasContent = true;
+                        levelData.forEach((action, index) => {
+                            const itemDiv = document.createElement('div');
+                            itemDiv.className = "flex items-center gap-2 mb-2";
+                            itemDiv.innerHTML = `
+                                <input type="text" value="${action}" data-level="${level}" data-index="${index}" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-purple-400 outline-none action-input" />
+                                <button class="bg-red-400 hover:bg-red-500 text-white p-2 rounded-full text-sm transition duration-200 remove-action-btn" data-level="${level}" data-index="${index}">&times;</button>
+                            `;
+                            levelContentDiv.appendChild(itemDiv);
+                        });
+                    }
                 } else {
                     console.warn(`DEBUG: editableActions[${level}] est vide ou non un tableau.`);
+                    editableActions[level] = [];
                 }
-            }
 
-            if (!hasContent) {
+                const addBtn = document.createElement('button');
+                addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
+                addBtn.textContent = "Ajouter Action";
+                addBtn.onclick = () => {
+                    editableActions[level].push('');
+                    renderAdminActions(); // Re-render to show new input
+                };
+                levelContentDiv.appendChild(addBtn);
+                actionsEditorDiv.appendChild(levelDetails); // Append the details element
+            });
+
+            if (!hasContent && Object.keys(editableActions).length === 0) {
                 actionsEditorDiv.innerHTML = '<p class="text-red-500 text-center">Aucune donnée d\'action chargée. Vérifiez la console pour les erreurs Firebase.</p>';
             }
 
+            // Attach listeners AFTER all elements are in the DOM
             actionsEditorDiv.querySelectorAll('.action-input').forEach(input => {
                 input.oninput = (e) => {
                     const level = e.target.dataset.level;
@@ -1042,75 +1104,86 @@
                     const level = e.target.dataset.level;
                     const index = parseInt(e.target.dataset.index);
                     editableActions[level] = editableActions[level].filter((_, i) => i !== index);
-                    renderAdminActions();
+                    renderAdminActions(); // Re-render after removal
                 };
             });
         }
 
         function renderAdminBodyParts() {
-            console.log("DEBUG: renderAdminBodyParts called. editableBodyParts state:", editableBodyParts); // Nouveau log
-            bodyPartsEditorDiv.innerHTML = '';
+            console.log("DEBUG: renderAdminBodyParts called. editableBodyParts state:", editableBodyParts);
+            bodyPartsEditorDiv.innerHTML = ''; // Clear existing content
+            const orderedLevels = ['doux', 'moyen', 'intense']; // Define order for main levels
+            const orderedSexCategories = ['neutral', 'femme', 'homme']; // Define order for sex categories
+
             let hasContent = false;
-            for (const level in editableBodyParts) {
-                const levelDiv = document.createElement('div');
-                levelDiv.className = "mb-6 p-4 border border-purple-200 rounded-lg bg-purple-50";
-                levelDiv.innerHTML = `<h4 class="text-xl font-semibold text-purple-800 mb-3 capitalize">${level}</h4>`;
-                let levelHasContent = false;
+            orderedLevels.forEach(level => {
+                const levelData = editableBodyParts[level];
+                const levelDetails = document.createElement('details');
+                levelDetails.className = "mb-4 bg-gray-100 rounded-lg shadow-sm";
+                levelDetails.innerHTML = `
+                    <summary class="collapsible-header text-xl font-semibold text-gray-700 capitalize">
+                        ${level}
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </summary>
+                    <div class="collapsible-content nested-collapsible-content space-y-3" id="bodyParts-${level}-content">
+                        <!-- Content for sex categories will be rendered here -->
+                    </div>
+                `;
+                const levelContentDiv = levelDetails.querySelector(`#bodyParts-${level}-content`);
 
-                for (const sexCategory in editableBodyParts[level]) {
-                    if (editableBodyParts[level][sexCategory] && Array.isArray(editableBodyParts[level][sexCategory]) && editableBodyParts[level][sexCategory].length > 0) {
-                        hasContent = true;
-                        levelHasContent = true;
-                        const categoryDiv = document.createElement('div');
-                        categoryDiv.className = "mb-4 pl-4 border-l-2 border-purple-300";
-                        categoryDiv.innerHTML = `<h5 class="text-lg font-medium text-gray-700 mb-2 capitalize">${sexCategory}</h5>`;
+                orderedSexCategories.forEach(sexCategory => {
+                    const categoryData = levelData ? levelData[sexCategory] : [];
+                    const categoryDetails = document.createElement('details'); // Nested collapsible for each sex category
+                    categoryDetails.className = "mb-3 bg-gray-50 rounded-md shadow-xs";
+                    categoryDetails.innerHTML = `
+                        <summary class="collapsible-header text-lg font-medium text-gray-600 capitalize">
+                            ${sexCategory === 'neutral' ? 'Neutre' : sexCategory}
+                            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </summary>
+                        <div class="collapsible-content nested-collapsible-content space-y-2" id="bodyParts-${level}-${sexCategory}-content">
+                            <!-- Content for parts will be rendered here -->
+                        </div>
+                    `;
+                    const categoryContentDiv = categoryDetails.querySelector(`#bodyParts-${level}-${sexCategory}-content`);
 
-                        editableBodyParts[level][sexCategory].forEach((part, index) => {
-                            const itemDiv = document.createElement('div');
-                            itemDiv.className = "flex items-center gap-2 mb-2";
-                            itemDiv.innerHTML = `
-                                <input type="text" value="${part}" data-level="${level}" data-category="${sexCategory}" data-index="${index}" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-purple-400 outline-none bodypart-input" />
-                                <button class="bg-red-400 hover:bg-red-500 text-white p-2 rounded-full text-sm transition duration-200 remove-bodypart-btn" data-level="${level}" data-category="${sexCategory}" data-index="${index}">&times;</button>
-                            `;
-                            categoryDiv.appendChild(itemDiv);
-                        });
 
-                        const addBtn = document.createElement('button');
-                        addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
-                        addBtn.textContent = "Ajouter Zone";
-                        addBtn.onclick = () => {
-                            if (!editableBodyParts[level][sexCategory]) editableBodyParts[level][sexCategory] = [];
-                            editableBodyParts[level][sexCategory].push('');
-                            renderAdminBodyParts();
-                        };
-                        categoryDiv.appendChild(addBtn);
-                        levelDiv.appendChild(categoryDiv);
+                    if (categoryData && Array.isArray(categoryData)) {
+                        if (categoryData.length > 0) {
+                            hasContent = true;
+                            categoryData.forEach((part, index) => {
+                                const itemDiv = document.createElement('div');
+                                itemDiv.className = "flex items-center gap-2 mb-2";
+                                itemDiv.innerHTML = `
+                                    <input type="text" value="${part}" data-level="${level}" data-category="${sexCategory}" data-index="${index}" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-purple-400 outline-none bodypart-input" />
+                                    <button class="bg-red-400 hover:bg-red-500 text-white p-2 rounded-full text-sm transition duration-200 remove-bodypart-btn" data-level="${level}" data-category="${sexCategory}" data-index="${index}">&times;</button>
+                                `;
+                                categoryContentDiv.appendChild(itemDiv);
+                            });
+                        }
                     } else {
-                        console.warn(`DEBUG: editableBodyParts[${level}][${sexCategory}] est vide ou non un tableau.`);
-                        const categoryDiv = document.createElement('div');
-                        categoryDiv.className = "mb-4 pl-4 border-l-2 border-purple-300";
-                        categoryDiv.innerHTML = `<h5 class="text-lg font-medium text-gray-700 mb-2 capitalize">${sexCategory}</h5>`;
-                        const addBtn = document.createElement('button');
-                        addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
-                        addBtn.textContent = "Ajouter Zone";
-                        addBtn.onclick = () => {
-                            if (!editableBodyParts[level][sexCategory]) editableBodyParts[level][sexCategory] = [];
-                            editableBodyParts[level][sexCategory].push('');
-                            renderAdminBodyParts();
-                        };
-                        categoryDiv.appendChild(addBtn);
-                        levelDiv.appendChild(categoryDiv);
+                        // Ensure the category exists as an empty array if not already
+                        if (!editableBodyParts[level]) editableBodyParts[level] = {};
+                        editableBodyParts[level][sexCategory] = [];
                     }
-                }
-                if (levelHasContent || Object.keys(editableBodyParts[level]).length > 0) { // Render level div even if categories are empty but exist
-                    bodyPartsEditorDiv.appendChild(levelDiv);
-                }
-            }
 
-            if (!hasContent) {
+                    const addBtn = document.createElement('button');
+                    addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
+                    addBtn.textContent = "Ajouter Zone";
+                    addBtn.onclick = () => {
+                        editableBodyParts[level][sexCategory].push('');
+                        renderAdminBodyParts();
+                    };
+                    categoryContentDiv.appendChild(addBtn);
+                    levelContentDiv.appendChild(categoryDetails); // Append the nested details element
+                });
+                bodyPartsEditorDiv.appendChild(levelDetails); // Append the main details element
+            });
+
+            if (!hasContent && Object.keys(editableBodyParts).length === 0) {
                 bodyPartsEditorDiv.innerHTML = '<p class="text-red-500 text-center">Aucune donnée de zone du corps chargée. Vérifiez la console pour les erreurs Firebase.</p>';
             }
 
+            // Attach listeners AFTER all elements are in the DOM
             bodyPartsEditorDiv.querySelectorAll('.bodypart-input').forEach(input => {
                 input.oninput = (e) => {
                     const level = e.target.dataset.level;
@@ -1131,72 +1204,73 @@
         }
 
         function renderAdminJokerChallenges() {
-            console.log("DEBUG: renderAdminJokerChallenges called. editableJokerChallenges state:", editableJokerChallenges); // Nouveau log
-            jokerChallengesEditorDiv.innerHTML = '';
+            console.log("DEBUG: renderAdminJokerChallenges called. editableJokerChallenges state:", editableJokerChallenges);
+            jokerChallengesEditorDiv.innerHTML = ''; // Clear existing content
+            const orderedLevels = ['level1', 'level2', 'level3', 'level4', 'level5']; // Define order
+
             let hasContent = false;
-            for (const level in editableJokerChallenges) {
-                if (editableJokerChallenges[level] && Array.isArray(editableJokerChallenges[level]) && editableJokerChallenges[level].length > 0) {
-                    hasContent = true;
-                    const levelDiv = document.createElement('div');
-                    levelDiv.className = "mb-6 p-4 border border-purple-200 rounded-lg bg-purple-50";
-                    levelDiv.innerHTML = `<h4 class="text-xl font-semibold text-purple-800 mb-3 capitalize">${level}</h4>`;
+            orderedLevels.forEach(level => {
+                const levelData = editableJokerChallenges[level];
+                const levelDetails = document.createElement('details'); // Main collapsible for each level
+                levelDetails.className = "mb-6 p-4 border border-purple-200 rounded-lg bg-purple-50";
+                levelDetails.innerHTML = `
+                    <summary class="collapsible-header text-xl font-semibold text-purple-800 capitalize">
+                        ${level}
+                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </summary>
+                    <div class="collapsible-content nested-collapsible-content space-y-4" id="joker-${level}-content">
+                        <!-- Content for joker challenges will be rendered here -->
+                    </div>
+                `;
+                const levelContentDiv = levelDetails.querySelector(`#joker-${level}-content`);
 
-                    editableJokerChallenges[level].forEach((challenge, index) => {
-                        const challengeDiv = document.createElement('div');
-                        challengeDiv.className = "mb-4 p-3 border border-purple-100 rounded-lg bg-white shadow-sm";
-                        challengeDiv.innerHTML = `
-                            <div class="flex flex-col gap-2">
-                                <label class="block text-gray-700 text-sm font-bold mb-1">Template du défi (utiliser {player1}, {player2}, {player3})</label>
-                                <input type="text" value="${challenge.template}" data-level="${level}" data-index="${index}" data-field="template" class="p-2 border border-gray-300 rounded-lg w-full focus:ring-1 focus:ring-purple-400 outline-none joker-input" placeholder="Ex: {player1} doit embrasser {player2} sur {bodyPart}." />
-                                <label class="block text-gray-700 text-sm font-bold mb-1 mt-2">Joueurs nécessaires (1, 2, 3 ou 'all')</label>
-                                <select data-level="${level}" data-index="${index}" data-field="playersNeeded" class="p-2 border border-gray-300 rounded-lg w-full focus:ring-1 focus:ring-purple-400 outline-none joker-select">
-                                    <option value="1" ${challenge.playersNeeded == 1 ? 'selected' : ''}>1</option>
-                                    <option value="2" ${challenge.playersNeeded == 2 ? 'selected' : ''}>2</option>
-                                    <option value="3" ${challenge.playersNeeded == 3 ? 'selected' : ''}>3</option>
-                                    <option value="all" ${challenge.playersNeeded == 'all' ? 'selected' : ''}>Tous</option>
-                                </select>
-                                <label class="block text-gray-700 text-sm font-bold mb-1 mt-2">Accessoires (séparés par des virgules)</label>
-                                <input type="text" value="${challenge.accessories ? challenge.accessories.join(', ') : ''}" data-level="${level}" data-index="${index}" data-field="accessories" class="p-2 border border-gray-300 rounded-lg w-full focus:ring-1 focus:ring-purple-400 outline-none joker-input" placeholder="Ex: bandeau, glaçon" />
-                                <button class="bg-red-400 hover:bg-red-500 text-white p-2 rounded-full text-sm mt-3 transition duration-200 self-end remove-joker-btn" data-level="${level}" data-index="${index}">Supprimer ce défi</button>
-                            </div>
-                        `;
-                        levelDiv.appendChild(challengeDiv);
-                    });
-
-                    const addBtn = document.createElement('button');
-                    addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
-                    addBtn.textContent = "Ajouter Nouveau Défi Joker";
-                    addBtn.onclick = () => {
-                        if (!editableJokerChallenges[level]) editableJokerChallenges[level] = [];
-                        const newId = `joker-${level}-${Date.now()}`;
-                        editableJokerChallenges[level].push({ id: newId, template: '', playersNeeded: 1, accessories: [] });
-                        renderAdminJokerChallenges();
-                    };
-                    levelDiv.appendChild(addBtn);
-                    jokerChallengesEditorDiv.appendChild(levelDiv);
+                if (levelData && Array.isArray(levelData)) {
+                    if (levelData.length > 0) {
+                        hasContent = true;
+                        levelData.forEach((challenge, index) => {
+                            const challengeDiv = document.createElement('div');
+                            challengeDiv.className = "mb-4 p-3 border border-purple-100 rounded-lg bg-white shadow-sm";
+                            challengeDiv.innerHTML = `
+                                <div class="flex flex-col gap-2">
+                                    <label class="block text-gray-700 text-sm font-bold mb-1">Template du défi (utiliser {player1}, {player2}, {player3})</label>
+                                    <textarea rows="3" data-level="${level}" data-index="${index}" data-field="template" class="p-2 border border-gray-300 rounded-lg w-full focus:ring-1 focus:ring-purple-400 outline-none joker-input" placeholder="Ex: {player1} doit embrasser {player2} sur {bodyPart}.">${challenge.template}</textarea>
+                                    <label class="block text-gray-700 text-sm font-bold mb-1 mt-2">Joueurs nécessaires (1, 2, 3 ou 'all')</label>
+                                    <select data-level="${level}" data-index="${index}" data-field="playersNeeded" class="p-2 border border-gray-300 rounded-lg w-full focus:ring-1 focus:ring-purple-400 outline-none joker-select">
+                                        <option value="1" ${challenge.playersNeeded == 1 ? 'selected' : ''}>1</option>
+                                        <option value="2" ${challenge.playersNeeded == 2 ? 'selected' : ''}>2</option>
+                                        <option value="3" ${challenge.playersNeeded == 3 ? 'selected' : ''}>3</option>
+                                        <option value="all" ${challenge.playersNeeded == 'all' ? 'selected' : ''}>Tous</option>
+                                    </select>
+                                    <label class="block text-gray-700 text-sm font-bold mb-1 mt-2">Accessoires (séparés par des virgules)</label>
+                                    <input type="text" value="${challenge.accessories ? challenge.accessories.join(', ') : ''}" data-level="${level}" data-index="${index}" data-field="accessories" class="p-2 border border-gray-300 rounded-lg w-full focus:ring-1 focus:ring-purple-400 outline-none joker-input" placeholder="Ex: bandeau, glaçon" />
+                                    <button class="bg-red-400 hover:bg-red-500 text-white p-2 rounded-full text-sm mt-3 transition duration-200 self-end remove-joker-btn" data-level="${level}" data-index="${index}">Supprimer ce défi</button>
+                                </div>
+                            `;
+                            levelContentDiv.appendChild(challengeDiv);
+                        });
+                    }
                 } else {
                     console.warn(`DEBUG: editableJokerChallenges[${level}] est vide ou non un tableau.`);
-                    const levelDiv = document.createElement('div');
-                    levelDiv.className = "mb-6 p-4 border border-purple-200 rounded-lg bg-purple-50";
-                    levelDiv.innerHTML = `<h4 class="text-xl font-semibold text-purple-800 mb-3 capitalize">${level}</h4>`;
-                    const addBtn = document.createElement('button');
-                    addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
-                    addBtn.textContent = "Ajouter Nouveau Défi Joker";
-                    addBtn.onclick = () => {
-                            if (!editableJokerChallenges[level]) editableJokerChallenges[level] = [];
-                        const newId = `joker-${level}-${Date.now()}`;
-                        editableJokerChallenges[level].push({ id: newId, template: '', playersNeeded: 1, accessories: [] });
-                        renderAdminJokerChallenges();
-                    };
-                    levelDiv.appendChild(addBtn);
-                    jokerChallengesEditorDiv.appendChild(levelDiv);
+                    editableJokerChallenges[level] = [];
                 }
-            }
 
-            if (!hasContent) {
+                const addBtn = document.createElement('button');
+                addBtn.className = "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-sm mt-3 transition duration-200";
+                addBtn.textContent = "Ajouter Nouveau Défi Joker";
+                addBtn.onclick = () => {
+                    const newId = `joker-${level}-${Date.now()}`;
+                    editableJokerChallenges[level].push({ id: newId, template: '', playersNeeded: 1, accessories: [] });
+                    renderAdminJokerChallenges();
+                };
+                levelContentDiv.appendChild(addBtn);
+                jokerChallengesEditorDiv.appendChild(levelDetails); // Append the details element
+            });
+
+            if (!hasContent && Object.keys(editableJokerChallenges).length === 0) {
                 jokerChallengesEditorDiv.innerHTML = '<p class="text-red-500 text-center">Aucune donnée de défi Joker chargée. Vérifiez la console pour les erreurs Firebase.</p>';
             }
 
+            // Attach listeners AFTER all elements are in the DOM
             jokerChallengesEditorDiv.querySelectorAll('.joker-input').forEach(input => {
                 input.oninput = (e) => {
                     const level = e.target.dataset.level;
